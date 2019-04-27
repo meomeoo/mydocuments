@@ -9,7 +9,7 @@
 ## 1.1 Khái niệm hđh
 1.  Cấu trúc phân lớp của hệ thống tính toán
 2.  Chức năng hệ điều hành
-###1.1.1 Cấu trúc phân lớp hệ thống tính toán
+### 1.1.1 Cấu trúc phân lớp hệ thống tính toán
 *  Hệ điều hành (Operating system) nằm giữa phần cứng của hệ thống và các chương trình ứng dụng
 <img srs="https://i.imgur.com/i6UGUZs.png">
 Mục tiêu: Cung cấp một môi trường để người sử dụng có thể thực hiện các chương
@@ -18,10 +18,10 @@ hơn.
 *  Chuẩn hóa giao diện người dùng đối với các hệ thống phần cứng khác nhau
 *  Sử dụng hiệu quả tài nguyên phần cứng và khai thác tối đa hiệu suất của
 phần cứng
-###1.1.2 Chức năng của hệ điều hành
+### 1.1.2 Chức năng của hệ điều hành
 1.  Giả lập một máy tính ảo
 2.  Quản lý tài nguyên của hệ thống
-####1.1.2.1 Giả lập một máy tính 
+#### 1.1.2.1 Giả lập một máy tính 
 Ẩn đi các chi tiết tài nguyên vật lí của máy tính, trừu tượng hóa các chức năng của phần cứng để dàng giao tiếp và sử dụng tài nguyên phần cứng một cách đơn giản hơn thông qua một giao diện được chuẩn hóa.Từ đó:
 *  Đơn giản hóa việc lập trình (giao tiếp với phần cứng máy tính)
   * Không phải làm việc với các dãy nhị phân
@@ -32,7 +32,7 @@ phần cứng
 *  Máy ảo: Hữu ích cho phát triển hệ điều hành
   * Nếu HĐH thử nghiệm bị lỗi, chỉ giới hạn trong máy ảo
   * Trợ giúp kiểm tra các chương trình trên các HĐH khác
-####1.1.2.2 Quản lí tài nguyên hệ thống
+#### 1.1.2.2 Quản lí tài nguyên hệ thống
 * HĐH phải quản lý tài nguyên để hoạt động của máy tính một
 cách hiệu quả nhất
 * Phân phối các tài nguyên cho các chương trình khi cần thiết
@@ -42,8 +42,8 @@ cách hiệu quả nhất
   * Nhiều chương trình cùng có thể được thực hiện
   * Tránh truy cập bất hợp lệ
   * Phải đảm bảo toàn vẹn dữ liệu (dùng chung vùng nhớ: file)
-##1.2 Lịch sử phát triển HĐh 
-##1.3 Đinh nghĩa và phân loại hđh
+## 1.2 Lịch sử phát triển HĐh 
+## 1.3 Đinh nghĩa và phân loại hđh
 ### 1.3.1 Đinh Nghĩa
 Có 4 định nghĩa từ 4 góc độ khác nhau
 ❖ Người sử dụng
