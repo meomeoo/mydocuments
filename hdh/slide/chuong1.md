@@ -11,18 +11,19 @@
 2.  Chức năng hệ điều hành
 ### 1.1.1 Cấu trúc phân lớp hệ thống tính toán
 *  Hệ điều hành (Operating system) nằm giữa phần cứng của hệ thống và các chương trình ứng dụng
+
 <img srs="https://i.imgur.com/i6UGUZs.png">
-Mục tiêu: Cung cấp một môi trường để người sử dụng có thể thực hiện các chương
-trình ứng dụng và làm cho máy tính dễ sử dụng hơn, thuận lợi hơn và hiệu quả
-hơn.
+
+Mục tiêu: Cung cấp một môi trường để người sử dụng có thể thực hiện các chương trình ứng dụng và làm cho máy tính dễ sử dụng hơn, thuận lợi hơn và hiệu quả hơn.
 *  Chuẩn hóa giao diện người dùng đối với các hệ thống phần cứng khác nhau
-*  Sử dụng hiệu quả tài nguyên phần cứng và khai thác tối đa hiệu suất của
-phần cứng
+*  Sử dụng hiệu quả tài nguyên phần cứng và khai thác tối đa hiệu suất của phần cứng
 ### 1.1.2 Chức năng của hệ điều hành
 1.  Giả lập một máy tính ảo
 2.  Quản lý tài nguyên của hệ thống
 #### 1.1.2.1 Giả lập một máy tính 
+
 Ẩn đi các chi tiết tài nguyên vật lí của máy tính, trừu tượng hóa các chức năng của phần cứng để dàng giao tiếp và sử dụng tài nguyên phần cứng một cách đơn giản hơn thông qua một giao diện được chuẩn hóa.Từ đó:
+
 *  Đơn giản hóa việc lập trình (giao tiếp với phần cứng máy tính)
   * Không phải làm việc với các dãy nhị phân
   * Mỗi tiến trình nghĩ nó sở hữu toàn bộ bộ nhớ, thời gian CPU, thiết bị...
@@ -33,8 +34,7 @@ phần cứng
   * Nếu HĐH thử nghiệm bị lỗi, chỉ giới hạn trong máy ảo
   * Trợ giúp kiểm tra các chương trình trên các HĐH khác
 #### 1.1.2.2 Quản lí tài nguyên hệ thống
-* HĐH phải quản lý tài nguyên để hoạt động của máy tính một
-cách hiệu quả nhất
+* HĐH phải quản lý tài nguyên để hoạt động của máy tính một cách hiệu quả nhất
 * Phân phối các tài nguyên cho các chương trình khi cần thiết
 * Giải quyết tranh chấp
 * Quyết định thứ tự cấp phát tài nguyên cho những yêu cầu
@@ -42,14 +42,20 @@ cách hiệu quả nhất
   * Nhiều chương trình cùng có thể được thực hiện
   * Tránh truy cập bất hợp lệ
   * Phải đảm bảo toàn vẹn dữ liệu (dùng chung vùng nhớ: file)
+
 ## 1.2 Lịch sử phát triển HĐh 
+
 ## 1.3 Đinh nghĩa và phân loại hđh
+
 ### 1.3.1 Đinh Nghĩa
+
 Có 4 định nghĩa từ 4 góc độ khác nhau
-❖ Người sử dụng
-❖ Người quản lý
-❖ Quan điểm kỹ thuật
-❖ Quan điểm hệ thống
+
+* Người sử dụng
+* Người quản lý
+* Quan điểm kỹ thuật
+* Quan điểm hệ thống
+
 Và chúng ta sẽ theo quan điểm của hệ thống: *Hệ điều hành là một hệ thống mô hình hoá, mô phỏng hoạt động của máy tính, của người sử dụng và của các thao tác viên, hoạt động trong chế độ đối thoại nhằm tạo môi trường khai thác thuận lợi hệ thống máy tính và quản lý tối ưu tài nguyên của hệ thống.*
 
 <img src = "https://i.imgur.com/8cw4Vyx.png">
@@ -368,7 +374,29 @@ Không nhằm trợ giúp người dùng mà dùng để vận hành hệ thốn
 
 Cung cấp các lời gọi hệ thống 
 
+## 1.6 Tích chất cơ bản của hệ thống
 
+1. Độ tin cậy cao
+Mọi hoạt động của HĐH đều phaỉ chính xác và được kiêm tra kĩ khi thực hiện.
+
+<img src = "https://i.imgur.com/laRvBqP.png">
+<img src = "https://i.imgur.com/hUA00mt.png">
+
+2. An toàn
+
+<img src = "https://i.imgur.com/nqTyFc2.png">
+
+3. Hiệu quả 
+
+<img src = "https://i.imgur.com/GVdnYov.png">
+
+4. Tổng quát theo thời gian 
+
+<img src ="https://i.imgur.com/vgJ8BJ0.png">
+
+5. Thuận tiện 
+
+<img src = "https://i.imgur.com/NRydYum.png">
 
 
 
