@@ -12,7 +12,7 @@
 ### 1.1.1 Cấu trúc phân lớp hệ thống tính toán
 *  Hệ điều hành (Operating system) nằm giữa phần cứng của hệ thống và các chương trình ứng dụng
 
-<img srs="https://i.imgur.com/i6UGUZs.png">
+<img src ="https://i.imgur.com/i6UGUZs.png">
 
 Mục tiêu: Cung cấp một môi trường để người sử dụng có thể thực hiện các chương trình ứng dụng và làm cho máy tính dễ sử dụng hơn, thuận lợi hơn và hiệu quả hơn.
 *  Chuẩn hóa giao diện người dùng đối với các hệ thống phần cứng khác nhau
