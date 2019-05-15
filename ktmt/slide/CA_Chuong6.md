@@ -48,4 +48,4 @@
 <img src = "https://i.imgur.com/zPen5p1.png">
 
 ## 6.3 Kĩ thuật đường ống lệnh
-Mục đích: Tối ưu hóa thời gian sử dụng CPU để sử lí luồng va cai gi do t dang test git
+Mục đích: Tối ưu hóa thời gian sử dụng CPU để sử lí luồng va cai gi do t dang test gitq sdvfdsvdsvvds
