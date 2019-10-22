@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - NhanVien",
+            "request": "launch",
+            "mainClass": "NhanVien"
+        }
+    ]
+}
