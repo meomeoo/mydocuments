@@ -1,7 +1,6 @@
-package PhongBan; 
 class NhanVien{
-    private String tenNhanVien;
-    private double heSoLuong;
+    String tenNhanVien;
+    double heSoLuong;
     public static final double LUONG_CO_BAN = 750000;
     public static final double LUONG_MAX = 20000000 ;
 
@@ -32,6 +31,33 @@ class NhanVien{
         
     }
 }
+
+class TruongPhong extends NhanVien {
+    private double phuCap;
+    private double soNamDuongChuc;
+
+    public TruongPhong(String ten, double heso, double phucap){
+        super(ten, heso);
+        this.phuCap = phucap;
+    }
+
+    public double tinhLuong(){
+        return  LUONG_CO_BAN * heSoLuong + phuCap;
+    }
+
+    public void inTTin (){
+        System.out.println("ten cua truong phong:" + tenNhanVien);
+        System.out.println("luong cua truong phongL"+ tinhLuong());
+        System.out.println("he so luong:" + heSoLuong);
+        System.out.println("phu cap:"+ phuCap);
+
+    }
+
+
+
+}
+
+
 
 public class PhongBan {
 
@@ -98,16 +124,8 @@ public class PhongBan {
     }
 
     public static void main(String[] args){
-        NhanVien nv1 = new NhanVien("dinh", 30);
-        NhanVien nv2 = new NhanVien("ngoc",3);
-        NhanVien nv3 = new NhanVien("khanh",1999);
-
-        PhongBan phong1 = new PhongBan("phong anh khanh");
-        phong1.themNhanVien(nv1);
-        phong1.themNhanVien(nv2);
-        phong1.themNhanVien(nv3);
-        phong1.xoaNhanVien(nv3);
-        phong1.inTTin();
+        TruongPhong tp = new TruongPhong("khanh", 6, 7);
+        tp.inTTin();
 
 }  
 
