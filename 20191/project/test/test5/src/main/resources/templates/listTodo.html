@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title> Loda To-do</title>
+  <meta http-equiv="Content-Type"Content="text/html; charset=UTF-8"/>
+ 
+
+
+ </head>
+<body>
+  
+<h1> Danh sach viec can lam</h1>
+<ul>
+      <!--Duyệt qua toàn bộ phần tử trong biến "todoList"-->
+<li th:each="todo: ${todoList}">
+        <!--Với mỗi phần tử, lấy ra title và detail-->
+        <span th:text="*{todo.getTitle()}"> </span> : <span th:text="*{todo.getDetail()}"> </span>
+        </li>
+      </ul>
+
+
+
+<a th:href="@{/addTodo}"class="btn btn-success"> + Them cong viec</a>
+
+</body>
+
+</html>

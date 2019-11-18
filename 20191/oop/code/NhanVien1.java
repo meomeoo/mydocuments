@@ -75,7 +75,7 @@ public class NhanVien1 {
         NhanVien1 NhanVien11 = new NhanVien1();
         NhanVien11.inTTin();
         NhanVien11.prin();
-
+        System.out.println(Nhanvien1.class);
         
     }  
 }

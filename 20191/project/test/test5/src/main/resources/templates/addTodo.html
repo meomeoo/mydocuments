@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title> Loda To-do</title>
+  <meta http-equiv="Content-Type"Content="text/html; charset=UTF-8"/>
+ 
+
+
+ </head>
+<body>
+  
+<h1> To-do </h1>
+
+<form th:action = "@{/addTodo}"th:object="${todo}"method="post">
+  <p> title <input Type = "text"th:field="*{title}"/> </p>
+  <p> detail <input Type = "text"th:field="*{detail}"/> </p>
+  <p> <button type "submit" class = "btn btn-success"> Add </button> </p>
+</form>
+
+
+
+
+</html>

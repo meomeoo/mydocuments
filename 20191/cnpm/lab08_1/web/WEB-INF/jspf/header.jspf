@@ -1,0 +1,28 @@
+ 
+        <div class="header">
+            <div id="site_title">
+                <img src="img/logo.jpg" alt=""><br>
+            </div>
+            <ol id="menu">
+                <li class="active_menu_item"><a href="#" style="color:#FFF">Home</a></li>
+                <li>
+                    <a href="#">Category</a>
+                    <ol id="sub_menu1">
+                        <li>
+                            <a href="#">Mac</a>
+                            <ol>
+                                <li><a href="#">iMac</a></li>
+                                <li><a href="#">Mac pro</a></li>
+                                <li><a href="#">MacBook Air</a></li>
+                                <li><a href="#">MacBook Pro</a></li>
+                            </ol>
+                        </li>
+                        
+                        <li><a href="#">iPad</a></li>
+                        <li><a href="#">iPhone</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ol>
+                </li>
+            </ol>
+            <div id="ClearFloat"></div>
+        </div>

@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App3",
+            "request": "launch",
+            "mainClass": "app3.App3"
+        }
+    ]
+}

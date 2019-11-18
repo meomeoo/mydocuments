@@ -17,10 +17,11 @@ public class NhanVien {
         heSoLuong = hesoluong;
     }
 
-    public void set (String ten, double luongcoban, double hesoluong){
+    public NhanVien set(String ten, double luongcoban, double hesoluong){
         setTenNhanVien(ten);
         setLuongCoBan(luongcoban);
         setHeSoLuong(hesoluong);
+        return this;
     }
 
     public boolean tangLuong (double heso){
@@ -48,9 +49,10 @@ public class NhanVien {
 
     public static void main(String[] args){
     NhanVien nhanvien1 = new NhanVien();
-    nhanvien1.set("dinh ngoc khanh", 12 ,12);
-    nhanvien1.inTTin();
+    nhanvien1.set("dinh ngoc khanh", 12 ,12).inTTin();
 } 
 }
+
+
 
     

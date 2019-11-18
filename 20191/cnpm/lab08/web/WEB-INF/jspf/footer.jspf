@@ -1,0 +1,33 @@
+<%-- any content can be specified here e.g.: --%>
+<div id="footer" >
+    <!-- Frist Column -->
+    <div class="one-fourth">
+        <h3>Customer's Services</h3>
+        <ul class="footer_links">
+            <li><a href="contact.jsp">Contact</a></li>
+        </ul>
+    </div>
+    <!-- Second Column -->
+    <div class="one-fourth">
+        <h3>Administrator</h3>
+        <ul class="footer_links">
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div>
+    <!-- Third Columns -->
+    <div class="one-fourth">
+        <h3>Information</h3>
+        For online shopping Apple's products.
+        <div id="social_icons">Theme by <a href='http://www.csstemplateheaven.com'>CssTemlateHeaven</a><br>
+            Photo <a href="http://dieterscheider.net">Dieter Schneider</a>
+        </div>
+    </div>
+    <!-- Fourth Column -->
+    <div class="one-fourth last">
+        <h3>Socialize</h3>
+        <img src="img/icon_fb.png" alt=""><img src="img/icon_twitter.png"> <img src="img/icon_in.png" alt=""></div> 
+    <div style="clear:both"></div>
+</div>
+<!-- END footer -->
+</body>
+</html>

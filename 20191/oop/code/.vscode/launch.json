@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Con",
+            "request": "launch",
+            "mainClass": "Con",
+            "projectName": "code_99a02801"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - NhanVien1",
             "request": "launch",
             "mainClass": "NhanVien1"

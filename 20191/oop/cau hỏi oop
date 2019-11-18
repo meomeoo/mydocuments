@@ -1,0 +1,7 @@
+Tại sao phương thức static chỉ có thể truy cập đến phương thức và biến static trong cùng một lớp nhưng hàm main được khai báo là static lại có thể khởi tạo ojbect từ class sau đó thông qua object gọi các menthod không static
+- lớp bao
+- parse<type>() và valueOf()
+-slide 64 bài 4
+- String e =String.valueOf(1.23); ???
+slide 74 bai 4
+

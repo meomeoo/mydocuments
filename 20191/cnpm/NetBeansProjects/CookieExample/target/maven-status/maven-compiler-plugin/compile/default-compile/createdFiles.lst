@@ -1,0 +1,5 @@
+servlet/LogoutServlet.class
+servlet/ProfileServlet.class
+com/mycompany/cookieexample/resources/JavaEE8Resource.class
+com/mycompany/cookieexample/JAXRSConfiguration.class
+servlet/LoginServlet.class
