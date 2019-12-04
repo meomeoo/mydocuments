@@ -1,0 +1,7 @@
+me/loda/spring/thymeleafweb/service/TodoService.class
+me/loda/spring/thymeleafweb/controller/TodoController.class
+me/loda/spring/thymeleafweb/model/TodoValidator.class
+me/loda/spring/thymeleafweb/repository/TodoRepository.class
+me/loda/spring/thymeleafweb/config/TodoConfig.class
+me/loda/spring/thymeleafweb/App.class
+me/loda/spring/thymeleafweb/model/Todo.class

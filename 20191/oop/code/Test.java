@@ -1,26 +1,39 @@
-class Cha {
-    static final int TUOI = 23;
-    String ten = "khai";
+import java.util.ArrayList;
+import java.util.List;
 
-    static int gettuoi() {
-        return TUOI;
+  
+class Test 
+{ 
+    private static java.util.List<Integer> list =new ArrayList<>();
+
+    void khoiTao(List<Integer> list){
+        list.add(1);
+        for(int i=0;i<5;i++){
+            list.add(5);
+        }
+        list.add(1);
+        for(int i=0;i<5;i++){
+            list.add(5);
+        }
     }
 
-    void getten() {
-        System.out.println(ten);
+    void in1(List<Integer> list){
+        for(int i =0; i<11 ;++i){
+            System.out.println(list.get(i));
+        }
     }
-}
-
-class Con extends Cha {
-}
-
-public class Test {
-     public static void main(String[] args) {
-            Con hue = new Con();
-            hue.getten();
-
-         
-     
+    void in2(){
+        for(int i =0; i<11 ;++i){
+            System.out.println(list.get(i));
+        }
     }
-    
-}
+
+    public static void main(String args[]) 
+    { 
+        Test test = new Test();
+        test.khoiTao(list);
+        test.in1(list);
+        test.in2();
+        
+    } 
+} 

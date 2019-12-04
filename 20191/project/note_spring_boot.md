@@ -1,5 +1,5 @@
 # Tham khảo từ Series hướng dẫn Spring Boot căn bản, Zero to Hero 
-[link bài viết ](https://kipalog.com/posts/Series-huong-dan-Spring-Boot-can-ban--Zero-to-Hero) 
+[link bài viết ](https://kipaloxg.com/posts/Series-huong-dan-Spring-Boot-can-ban--Zero-to-Hero) 
 
 ## 9/11/2019
 
@@ -140,7 +140,7 @@ public class Girl {
 }
 ```
 ### @PostConstruct và @PreDestroy 
-- 2 annotation này nằm trực tiếp trong bea, để thể hiện vòng đời của bean.
+- 2 annotation này nằm trực tiếp trong bean, để thể hiện vòng đời của bean.
 ex:
 ```
 import org.springframework.stereotype.Component;

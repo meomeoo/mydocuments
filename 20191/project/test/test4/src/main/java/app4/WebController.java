@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class WebController {
 
+    int a = 12;
+    String b = "khanh";
+
     @GetMapping("/profile")
     public String profile(Model model){
         // Tạo ra thông tin
@@ -21,6 +24,8 @@ public class WebController {
 
         // Đưa thông tin vào Model
         model.addAttribute("lodaProfile", profile);
+        model.addAttribute("diem", a);
+        model.addAttribute("ten",b);
         
         // TRả về template profile.html
         return "profile";
