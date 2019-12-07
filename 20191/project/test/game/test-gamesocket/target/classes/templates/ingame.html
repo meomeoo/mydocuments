@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  
+<meta charset="UTF-8"/>
+    <title>Student form</title>
+    <style>
+        table {
+            border-collapse: separate;
+        }
+
+        tr td {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            border-left: none;
+            text-align: center;
+        }
+
+        tr td:first-child,
+        tr td:last-child {
+            width: 80px;
+        }
+
+        .line1 td:first-child {
+            border-top-left-radius: 40px;
+            border-bottom: none;
+            border-left: 1px solid #000;
+        }
+        .line1 td:last-child {
+            border-top-right-radius: 40px;
+            border-bottom: none;
+        }
+        .line2 td:first-child {
+            border-bottom-left-radius: 40px;
+            border-top: none;
+            border-left: 1px solid #000;
+        }
+        .line2 td:last-child {
+            border-bottom-right-radius: 40px;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<h2 >Điểm Đội 2:<span th:text="${diem2}"></span></h2>
+
+<table cellspacing="0">
+    <tr>
+
+    </tr>
+    <tr class="line1">
+        <td  >Quan</td>
+        <td th:text="${u25}" >1</td>
+        <td th:text="${u24}" >2</td>
+        <td th:text="${u23}" >3</td>
+        <td th:text="${u22}" >4</td>
+        <td th:text="${u21}" >5</td>
+
+        <td>Quan</td>
+
+    </tr>
+    <tr class="line2">
+        <td th:text="${Q1}">10</td>
+        <td th:text="${u11}" >a</td>
+        <td th:text="${u12}" >b</td>
+        <td th:text="${u13}" >c</td>
+        <td th:text="${u14}" >d</td>
+        <td th:text="${u15}" >e</td>
+
+        <td th:text="${Q2}">10</td>
+
+    </tr>
+
+    <tr>
+
+    </tr>
+</table>
+<h2>Điểm Đội 1 : <span th:text="${diem1}"></span></h2>
+
+
+
+</body>
+</html>

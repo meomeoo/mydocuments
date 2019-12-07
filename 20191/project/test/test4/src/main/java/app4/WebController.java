@@ -13,7 +13,8 @@ public class WebController {
     String b = "khanh";
 
     @GetMapping("/profile")
-    public String profile(Model model){
+    public String profile(Mo[]){
+        Model model;
         // Tạo ra thông tin
         List<Info> profile = new ArrayList<>();
         profile.add(new Info("fullname", "Nguyễn Hoàng Nam"));
