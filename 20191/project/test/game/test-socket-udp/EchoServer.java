@@ -16,23 +16,23 @@ public class EchoServer {
             System.out.println("Waiting for messages from Client ... ");
  
             while (true) { // Tạo gói tin nhận
-                DatagramPacket incoming = new DatagramPacket(BUFFER, BUFFER.length);
-                ds.receive(incoming); // Chờ nhận gói tin gởi đến
- 
-                // Lấy dữ liệu khỏi gói tin nhận
-                String message = new String(incoming.getData(), 0, incoming.getLength());
-                System.out.println(message);
-                char[] mes = message.toCharArray();
-                int n = 0;
-                int[] d = new int[3];
-                for (int i = 0; i < mes.length; i++) {
-                    if (mes[i] <= '9' && mes[i] >= '0') {
-                        d[n] = mes[i] - '0';
-                        System.out.println("Received: " +d[n] );
-                        n++;
-        
+                    DatagramPacket incoming = new DatagramPacket(BUFFER, BUFFER.length);
+                    ds.receive(incoming); // Chờ nhận gói tin gởi đến
+    
+                    // Lấy dữ liệu khỏi gói tin nhận
+                    String message = new String(incoming.getData(), 0, incoming.getLength());
+                    System.out.println(message);
+                    char[] mes = message.toCharArray();
+                    int n = 0;
+                    int[] d = new int[3];
+                    for (int i = 0; i < mes.length; i++) {
+                        if (mes[i] <= '9' && mes[i] >= '0') {
+                            d[n] = mes[i] - '0';
+                            System.out.println("Received: " +d[n] );
+                            n++;
+            
+                        }
                     }
-                }
 
                 break;
                 

@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
-  
-<meta charset="UTF-8"/>
+
+    <meta charset="UTF-8" />
     <title>Student form</title>
     <style>
         table {
@@ -30,61 +29,110 @@
             border-bottom: none;
             border-left: 1px solid #000;
         }
+
         .line1 td:last-child {
             border-top-right-radius: 40px;
             border-bottom: none;
         }
+
         .line2 td:first-child {
             border-bottom-left-radius: 40px;
             border-top: none;
             border-left: 1px solid #000;
         }
+
         .line2 td:last-child {
             border-bottom-right-radius: 40px;
             border-top: none;
         }
     </style>
 </head>
+
 <body>
 
 
 
-<h2 >Điểm Đội 2:<span th:text="${diem2}"></span></h2>
+    <h2>Điểm Đội 2:<span th:text="${diem2}"></span></h2>
 
-<table cellspacing="0">
-    <tr>
+    <table cellspacing="0">
+        <tr>
 
-    </tr>
-    <tr class="line1">
-        <td  >Quan</td>
-        <td th:text="${u25}" >1</td>
-        <td th:text="${u24}" >2</td>
-        <td th:text="${u23}" >3</td>
-        <td th:text="${u22}" >4</td>
-        <td th:text="${u21}" >5</td>
+        </tr>
+        <tr class="line1">
+            <td>Quan</td>
+            <td th:text="${u25}">1</td>
+            <td th:text="${u24}">2</td>
+            <td th:text="${u23}">3</td>
+            <td th:text="${u22}">4</td>
+            <td th:text="${u21}">5</td>
 
-        <td>Quan</td>
+            <td>Quan</td>
 
-    </tr>
-    <tr class="line2">
-        <td th:text="${Q1}">10</td>
-        <td th:text="${u11}" >a</td>
-        <td th:text="${u12}" >b</td>
-        <td th:text="${u13}" >c</td>
-        <td th:text="${u14}" >d</td>
-        <td th:text="${u15}" >e</td>
+        </tr>
+        <tr class="line2">
+            <td th:text="${Q1}">10</td>
+            <td th:text="${u11}">a</td>
+            <td th:text="${u12}">b</td>
+            <td th:text="${u13}">c</td>
+            <td th:text="${u14}">d</td>
+            <td th:text="${u15}">e</td>
 
-        <td th:text="${Q2}">10</td>
+            <td th:text="${Q2}">10</td>
 
-    </tr>
+        </tr>
 
-    <tr>
+        <tr>
 
-    </tr>
-</table>
-<h2>Điểm Đội 1 : <span th:text="${diem1}"></span></h2>
+        </tr>
+    </table>
+    <h2>Điểm Đội 1 : <span th:text="${diem1}"></span></h2>
 
+
+    <h3>Demo WebSocket</h3>
+  
+
+    <textarea id="textAreaMessage" rows="10" cols="50"></textarea>
+    <script type="text/javascript">
+        var data;
+        var websocket;
+        connect();
+        function connect() {
+            websocket = new WebSocket('ws://127.0.0.1:4444');
+
+            websocket.onopen = function () {
+                var i = (typeof websocket != 'undefined' && websocket.readyState == WebSocket.OPEN);
+                textAreaMessage.value += "Server  ..." + i + "\n";
+            };
+            websocket.onmessage = function (message) { processMessage(message); };
+            websocket.onclose = function (message) { processClose(message); };
+            websocket.onerror = function (message) { processError(message); };
+        }
+        function disconnect() {
+            websocket.close();
+        }
+
+        function processOpen(message) {
+        }
+        function processMessage(message) {
+            console.log(message);
+            textAreaMessage.value += "Response From Server ==> " + message.data + " \n";
+        }
+        function processClose(message) {
+            textAreaMessage.value += "Server Disconnect... \n";
+        }
+        function processError(message) {
+            textAreaMessage.value += "Error... " + message + " \n";
+        }
+        function sendMessage() {
+            if (typeof websocket != 'undefined' && websocket.readyState == WebSocket.OPEN) {
+                websocket.send(textMessage.value);
+                textAreaMessage.value += "Send to Server ==> " + textMessage.value + " \n";
+                textMessage.value = "";
+            }
+        }
+    </script>
 
 
 </body>
+
 </html>

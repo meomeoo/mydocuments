@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello World</title>
+<title>Demo websocket</title>
 </head>
-<body>
+<body>  
+    <h1>Demo WebSocket</h1>
+    <input onclick="disconnect()" value="Disconnect" type="button" /> <br/><br/>
+    
+    <input id="textMessage" type="text" />
+    <input onclick="sendMessage()" value="Send Message" type="button" /> <br/><br/>
+    
+    <textarea id="textAreaMessage" rows="10" cols="50"></textarea>
+    <script type="text/javascript">
+      var websocket;
+      connect();
+      function connect() {
+        websocket = new WebSocket('ws://127.0.0.1:4444');
 
-<h1>Đây là một trang web</h1>
-
-<a href="/about">About</a>
-
-<form method="get" action="/hello">
-  <input type="input" name="name">
-  <button type="submit">Submit</button>
-</form>
+        websocket.onopen = function() {        
+          var i = (typeof websocket != 'undefined' && websocket.readyState == WebSocket.OPEN);
+          textAreaMessage.value += "Server  ..."+ i +"\n";
+};
+        websocket.onmessage = function(message) {processMessage(message);};
+        websocket.onclose = function(message) {processClose(message);};
+        websocket.onerror = function(message) {processError(message);};
+      }
+      function disconnect() {
+        websocket.close();
+      }
+      
+      function processOpen(message) {
+      }
+      function processMessage(message) {
+        console.log(message);
+        textAreaMessage.value += "Response From Server ==> " + message.data + " \n";
+      }
+      function processClose(message) {
+        textAreaMessage.value += "Server Disconnect... \n";
+      }
+      function processError(message) {
+        textAreaMessage.value += "Error... " + message +" \n";
+      }
+      function sendMessage() {
+        if (typeof websocket != 'undefined' && websocket.readyState == WebSocket.OPEN) {
+          websocket.send(textMessage.value);
+          textAreaMessage.value += "Send to Server ==> " + textMessage.value + " \n";
+          textMessage.value = "";
+        }
+      }
+    </script>
 </body>
 </html>

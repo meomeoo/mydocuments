@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import app3.WebsocketServer;
 
 // Đánh dấu đây là một Controller
 // Nơi tiếp nhận các reqquest từ phía người dùng
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class WebController {
 
     // Đón nhận request GET
-    @GetMapping("/") // Nếu người dùng request tới địa chỉ "/"
+    @GetMapping("/index") // Nếu người dùng request tới địa chỉ "/"
     public String index() {
         return "index"; // Trả về file index.html
     }

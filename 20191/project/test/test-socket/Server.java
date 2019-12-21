@@ -1,13 +1,15 @@
- 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
  
 public class Server {
  
-    public final static int SERVER_PORT = 7;
+    public final static int SERVER_PORT = 4444;
+    public final static InetSocketAddress inet = new InetSocketAddress(SERVER_PORT);
  
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
@@ -15,6 +17,7 @@ public class Server {
             System.out.println("Binding to port " + SERVER_PORT + ", please wait  ...");
             serverSocket = new ServerSocket(SERVER_PORT);
             System.out.println("Server started: " + serverSocket);
+            System.out.println(inet);
             System.out.println("Waiting for a client ...");
             while (true) {
                 try {
@@ -23,13 +26,8 @@ public class Server {
  
                     OutputStream os = socket.getOutputStream();
                     InputStream is = socket.getInputStream();
-                    int ch = 0;
-                    while (true) {
-                        ch = is.read(); // Receive data from client
-                        if (ch == -1) {
-                            break;
-                        }
-                        os.write(ch); // Send the results to client
+                    for(int i = 0; i <10;++i) {
+                        os.write(i); // Send the results to client
                     }
                     socket.close();
                 } catch (IOException e) {

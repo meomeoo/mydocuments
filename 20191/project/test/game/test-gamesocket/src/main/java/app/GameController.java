@@ -1,22 +1,25 @@
 package app;
 
-import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import java.lang.InterruptedException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-import app.GameController;
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import app.WebsocketServer;
+import com.google.gson.Gson;
+
+
 
 @Controller
 @RequestMapping("/game")
 public class GameController {
-    public final static int SERVER_PORT = 8082;
 
     private static java.util.List<Integer> list = new ArrayList<>();
     private static boolean check = false;
@@ -29,6 +32,8 @@ public class GameController {
     private static boolean Quan1 = true;
     private static boolean Quan2 = true;
 
+    public final static byte[] BUFFER = new byte[1000]; // Vùng đệm chứa dữ liệu cho gói tin nhận
+
     private void khoiTao(List<Integer> list) {
         list.add(1);
         for (int i = 0; i < 5; i++) {
@@ -38,6 +43,8 @@ public class GameController {
         for (int i = 0; i < 5; i++) {
             list.add(5);
         }
+        list.add(0);
+        list.add(0);
         this.list = list;
     }
 
@@ -58,7 +65,7 @@ public class GameController {
         int viTriT1 = checkVitriTru1(indexReal, derection);
         int viTriT2 = checkVitriTru1(viTriT1, derection);
         if ((viTriT1 == 0 || viTriT1 == 6) && list.get(viTriT1) != 0) {
-            runAgain = false;
+           runAgain = false;
         } else {
             if ((viTriT1 == 1 || viTriT1 == 11 || viTriT1 == 7 || viTriT1 == 5) && (viTriT2 == 0 || viTriT2 == 6)
                     && list.get(viTriT1) == 0 && list.get(viTriT2) != 0 && Quan1 == true && Quan2 == true) {
@@ -116,9 +123,7 @@ public class GameController {
         return true;
     }
 
-    @RequestMapping("/go")
-    public String go(Model model, @RequestParam(value = "index", required = true) int index, @RequestParam(value = "direction", required = true) String direction, @RequestParam (value = "orderUser", required = true) int orderUser)
-            throws InterruptedException {
+    public void go( int index, String direction, int orderUser) throws InterruptedException {
         String url = "http://localhost:8080/hello/render";
         if (this.check == false) {
             this.khoiTao(new ArrayList<>());
@@ -129,7 +134,6 @@ public class GameController {
             indexReal = index;
             indexReal = orderUser == 0 ? index : index + 6;
             if (order == orderUser) {
-
 
                 if (list.get(1) == 0 && list.get(2) == 0 && list.get(3) == 0 && list.get(4) == 0 && list.get(5) == 0
                         && orderUser == 0) {
@@ -200,70 +204,106 @@ public class GameController {
 
         runAgain = true;
 
-        return "ingame";
     }
 
-    @RequestMapping(value = "/ingame",method = RequestMethod.GET)
-    public String ingame(Model model ){
-        int b = 0;
+    @RequestMapping(value = "/ingame", method = RequestMethod.GET)
+    public String ingame(Model model) {
         if (this.check == false) {
             this.khoiTao(new ArrayList<>());
             this.check = true;
         }
-        render(model);
-        try{
-            b = socket();
-        }
-        catch (IOException e){
-            System.out.println("aaaaaaaaaaaaaa");
-        }
         
-
-        return test(model, b);
-            
-        
+        return render(model);
     }
 
-    public int socket()throws IOException{
-        ServerSocket serverSocket = null;
-        try {
-            System.out.println("Binding to port " + SERVER_PORT + ", please wait  ...");
-            serverSocket = new ServerSocket(SERVER_PORT);
-            System.out.println("Server started: " + serverSocket);
-            System.out.println("Waiting for a client ...");
-            while (true) {
+    @RequestMapping(value = "/socket", method = RequestMethod.GET)
+    public void socket() throws IOException, InterruptedException {
+
+        // Create DatagramSocket and get ip
+        DatagramSocket ss = new DatagramSocket(1234);
+        InetAddress ip = InetAddress.getLocalHost();
+
+        System.out.println("Running UnSyncChatServer.java");
+
+        System.out.println("Server is Up....");
+
+        // Create a sender thread
+        // with a nested runnable class definition
+        Thread ssend;
+        ssend = new Thread(new Runnable() {
+            @Override
+            public void run() {
+            
+
                 try {
-                    Socket socket = serverSocket.accept();
-                    System.out.println("Client accepted: " + socket);
- 
-                    OutputStream os = socket.getOutputStream();
-                    InputStream is = socket.getInputStream();
-                    int ch = -1;
                     while (true) {
-                        ch = is.read(); // Receive data from client
-                        if (ch != -1) 
-                            socket.close();
-                            return ch;
+                        synchronized (this)
+
+                        {
+                            DatagramPacket incoming = new DatagramPacket(BUFFER, BUFFER.length);
+                            ss.receive(incoming); // Chờ nhận gói tin gởi đến
+                            String message = new String(incoming.getData(), 0, incoming.getLength());
+
+                            char[] mes = message.toCharArray();
+                            int[] d = new int[3];
+                            int n = 0;
+                            for (int i = 0; i < mes.length; i++) {
+                                if (mes[i] <= '9' && mes[i] >= '0') {
+                                    d[n] = mes[i] - '0';
+                                    System.out.println("Received from Client d+1: " + d[n]);
+                                    ++n;
+                                    
+                                }
+                            }
+
+                            if(d[1] == 0){
+                                go(d[0], "left", d[2]);
+                                list.set(12,pointUser1);
+                                list.set(13,pointUser2);
+                                String json = new Gson().toJson(list );
+                                WebsocketServer.send(json);
+                            }
+                            else{
+                                go(d[0], "right", d[2]);
+                                list.set(12,pointUser1);
+                                list.set(13,pointUser2);
+                                String json = new Gson().toJson(list );
+                                WebsocketServer.send(json);
+                            }
+                            
+                            // scan new message to send
+                            DatagramPacket outsending = new DatagramPacket(message.getBytes(), message.getBytes().length,
+                                    incoming.getAddress(), incoming.getPort());
+
+                            // send the new packet
+                            ss.send(outsending);
+
+                            System.out.println("Server says to Client: " + message);
+
+                            // exit condition
+                            if ((message).equals("bye")) {
+                                System.out.println("Server" + " exiting... ");
+                                break;
+                            }
+                            System.out.println("Waiting for" + " client response... ");
                         }
-                        
-                    
-                } catch (IOException e) {
-                    System.err.println(" Connection Error: " + e);
+                    }
+                }
+
+                catch (Exception e) {
+                    System.out.println("Exception occured");
                 }
             }
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        } finally {
-            if (serverSocket != null) {
-                serverSocket.close();
-            }
-        }
-        return 0;
+        });
 
+        ssend.start();
+
+        ssend.join();
     }
 
-    public String test(Model model,int socket){
-        model.addAttribute("socket",socket);
+    
+
+    public String render(Model model) {
         model.addAttribute("lists", list);
         model.addAttribute("diem1", pointUser1);
         model.addAttribute("diem2", pointUser2);
@@ -279,29 +319,10 @@ public class GameController {
         model.addAttribute("u25", list.get(11));
         model.addAttribute("Q1", list.get(0));
         model.addAttribute("Q2", list.get(6));
-        return "test";
-
-    }
-
-    public String render(Model model){
-        model.addAttribute("lists", list);
-        model.addAttribute("diem1", pointUser1);
-        model.addAttribute("diem2", pointUser2);
-        model.addAttribute("u11", list.get(1));
-        model.addAttribute("u12", list.get(2));
-        model.addAttribute("u13", list.get(3));
-        model.addAttribute("u14", list.get(4));
-        model.addAttribute("u15", list.get(5));
-        model.addAttribute("u21", list.get(7));
-        model.addAttribute("u22", list.get(8));
-        model.addAttribute("u23", list.get(9));
-        model.addAttribute("u24", list.get(10));
-        model.addAttribute("u25", list.get(11));
-        model.addAttribute("Q1", list.get(0));
-        model.addAttribute("Q2", list.get(6));
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         return "ingame";
 
     }
-    
+
 }
+
+   

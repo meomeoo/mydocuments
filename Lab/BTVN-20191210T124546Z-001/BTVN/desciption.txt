@@ -1,0 +1,8 @@
+Id: stt
+LotArea: diện tích tổng thể (feet)
+1stFlrSF: diện tích tầng 1
+2ndFlrSF:  diện tích tầng 2
+GrLivArea: diện tích sống
+BedroomAbvGr: số phòng ngủ
+KitchenAbvGr: số phòng bếp
+SalePrice: Giá bán
