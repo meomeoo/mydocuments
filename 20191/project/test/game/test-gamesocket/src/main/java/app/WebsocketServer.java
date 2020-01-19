@@ -6,8 +6,16 @@ import org.java_websocket.server.WebSocketServer;
 import java.net.InetSocketAddress;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
+import com.google.gson.Gson;
+import java.util.ArrayList;
+
+
+
 
 public class WebsocketServer extends WebSocketServer {
+    List<Integer> list = new ArrayList<>();
+
 
     private static int TCP_PORT = 4444;
 
@@ -17,12 +25,29 @@ public class WebsocketServer extends WebSocketServer {
         super(new InetSocketAddress(TCP_PORT));
         conns = new HashSet<>();
     }
+    void khoiTao(List<Integer> list) {
+        list.add(1);
+        for (int i = 0; i < 5; i++) {
+            list.add(5);
+        }
+        list.add(1);
+        for (int i = 0; i < 5; i++) {
+            list.add(5);
+        }
+        list.add(0);
+        list.add(0);
+        this.list = list;
+    }
 
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
         conns.add(conn);
         System.out.println(conn);
         System.out.println("New connection from " + conn.getRemoteSocketAddress().getAddress().getHostAddress());
+        khoiTao(list);
+        String json = new Gson().toJson(list );
+        WebsocketServer.send(json);
+        
          
     }
 

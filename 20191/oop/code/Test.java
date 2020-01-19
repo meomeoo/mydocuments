@@ -1,39 +1,37 @@
-import java.util.ArrayList;
-import java.util.List;
-
-  
-class Test 
-{ 
-    private static java.util.List<Integer> list =new ArrayList<>();
-
-    void khoiTao(List<Integer> list){
-        list.add(1);
-        for(int i=0;i<5;i++){
-            list.add(5);
-        }
-        list.add(1);
-        for(int i=0;i<5;i++){
-            list.add(5);
-        }
+class Cha{
+    public Cha(){
+    
     }
+    int a =12;
 
-    void in1(List<Integer> list){
-        for(int i =0; i<11 ;++i){
-            System.out.println(list.get(i));
-        }
-    }
-    void in2(){
-        for(int i =0; i<11 ;++i){
-            System.out.println(list.get(i));
-        }
-    }
 
-    public static void main(String args[]) 
-    { 
-        Test test = new Test();
-        test.khoiTao(list);
-        test.in1(list);
-        test.in2();
-        
-    } 
-} 
+    void prin(){
+        StringBuffer buffer = new StringBuffer("khanh");
+        buffer.append("This is ") ;
+        buffer.append("String") ;
+        buffer.insert(7," a") ;
+        buffer.append('.');
+        System.out.println(buffer.length());
+        // 17
+        System.out.println(buffer.capacity());
+        // 32
+        String output = buffer.toString() ;
+        System.out.println(output);    }
+}
+
+class Con{
+
+    
+    void prin(){
+        System.out.println("day la lop con");
+    }
+}
+
+public class Test{
+public static void main(String[] args){
+    Cha cha2 = new Cha();
+    cha2.prin();
+
+}
+    
+}

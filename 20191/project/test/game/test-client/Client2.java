@@ -17,7 +17,7 @@ public class Client2 {
 
 		System.out.println("Running UnSyncChatClient.java"); 
 
-		System.out.println("Client is Up...."); 
+		System.out.println("Bot is Up...."); 
 
 		// create a sender thread with a nested 
 		// runnable class definition 
@@ -49,7 +49,7 @@ public class Client2 {
 							cs.send(sp); 
 
 							String msg = new String(sd); 
-							System.out.println("Client says: "
+							System.out.println("Bot says: "
 											+ msg); 
 							// exit condition 
 							if (msg.equals("bye")) { 

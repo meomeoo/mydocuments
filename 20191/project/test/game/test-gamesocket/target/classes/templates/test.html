@@ -3,8 +3,8 @@
 
 <head>
 
-  
-<meta charset="UTF-8"/>
+
+    <meta charset="UTF-8" />
     <title>Student form</title>
     <style>
         table {
@@ -29,63 +29,143 @@
             border-bottom: none;
             border-left: 1px solid #000;
         }
+
         .line1 td:last-child {
             border-top-right-radius: 40px;
             border-bottom: none;
         }
+
         .line2 td:first-child {
             border-bottom-left-radius: 40px;
             border-top: none;
             border-left: 1px solid #000;
         }
+
         .line2 td:last-child {
             border-bottom-right-radius: 40px;
             border-top: none;
         }
     </style>
 </head>
+
 <body>
 
-<h2 >Gia tri socket:<span th:text="${socket}"></span></h2>
+    <h3>Demo WebSocket</h3>
 
 
+    <textarea id="textAreaMessage" rows="10" cols="50"></textarea>
+    <script type="text/javascript">
+        var arr = "[1,5,5,5,5,5,1,5,5,5,5,5,0,0]";
+        arr = JSON.parse(arr);
+        var websocket;
+        connect();
+        function connect() {
+            websocket = new WebSocket('ws://127.0.0.1:4444');
 
-<h2 >Điểm Đội 2:<span th:text="${diem2}"></span></h2>
+            websocket.onopen = function () {
+                var i = (typeof websocket != 'undefined' && websocket.readyState == WebSocket.OPEN);
+                textAreaMessage.value += "Server  ..." + i + "\n";
+            };
+            websocket.onmessage = function (message) { processMessage(message); };
+            websocket.onclose = function (message) { processClose(message); };
+            websocket.onerror = function (message) { processError(message); };
+        }
+        function disconnect() {
+            websocket.close();
+        }
 
-<table cellspacing="0">
-    <tr>
+        function processOpen(message) {
+        }
+        function processMessage(message) {
+            console.log(message);
+            arr = JSON.parse(message.data)
+            document.getElementById("quan1").innerHTML = arr[0];
+            document.getElementById("u11").innerHTML = arr[1];
+            document.getElementById("u12").innerHTML = arr[2];
+            document.getElementById("u13").innerHTML = arr[3];
+            document.getElementById("u14").innerHTML = arr[4];
+            document.getElementById("u15").innerHTML = arr[5];
+            document.getElementById("quan2").innerHTML = arr[6];
+            document.getElementById("u21").innerHTML = arr[7];
+            document.getElementById("u22").innerHTML = arr[8];
+            document.getElementById("u23").innerHTML = arr[9];
+            document.getElementById("u24").innerHTML = arr[10];
+            document.getElementById("u25").innerHTML = arr[11];
+            document.getElementById("point1").innerHTML = arr[12];
+            document.getElementById("point2").innerHTML = arr[13];
+        }
+        function processClose(message) {
+            textAreaMessage.value += "Server Disconnect... \n";
+        }
+        function processError(message) {
+            textAreaMessage.value += "Error... " + message + " \n";
+        }
+        function sendMessage() {
+            if (typeof websocket != 'undefined' && websocket.readyState == WebSocket.OPEN) {
+                websocket.send(textMessage.value);
+                textAreaMessage.value += "Send to Server ==> " + textMessage.value + " \n";
+                textMessage.value = "";
+            }
+        }
+    </script>
 
-    </tr>
-    <tr class="line1">
-        <td  >Quan</td>
-        <td th:text="${u25}" >1</td>
-        <td th:text="${u24}" >2</td>
-        <td th:text="${u23}" >3</td>
-        <td th:text="${u22}" >4</td>
-        <td th:text="${u21}" >5</td>
 
-        <td>Quan</td>
+    <h2>Điểm Đội 2:<span id="point2"></span></h2>
 
-    </tr>
-    <tr class="line2">
-        <td th:text="${Q1}">10</td>
-        <td th:text="${u11}" >a</td>
-        <td th:text="${u12}" >b</td>
-        <td th:text="${u13}" >c</td>
-        <td th:text="${u14}" >d</td>
-        <td th:text="${u15}" >e</td>
+    <table cellspacing="0">
+        <tr>
 
-        <td th:text="${Q2}">10</td>
+        </tr>
+        <tr class="line1">
+            <td>Quan</td>
+            <td id="u25">10</td>
+            <td id="u24">10</td>
+            <td id="u23">10</td>
+            <td id="u22">10</td>
+            <td id="u21">10</td>
 
-    </tr>
+            <td>Quan</td>
 
-    <tr>
+        </tr>
+        <tr class="line2">
+            <td id="quan1">10</td>
+            <td id="u11">10</td>
+            <td id="u12">10</td>
+            <td id="u13">10</td>
+            <td id="u14">10</td>
+            <td id="u15">10</td>
 
-    </tr>
-</table>
-<h2>Điểm Đội 1 : <span th:text="${diem1}"></span></h2>
+            <td id="quan2">10</td>
+
+        </tr>
+
+        <tr>
+
+        </tr>
+
+    </table>
+    <h2>Điểm Đội 1 : <span id="point1"></span></h2>
+
+    <script>
+        document.getElementById("quan1").innerHTML = arr[0];
+        document.getElementById("u11").innerHTML = arr[1];
+        document.getElementById("u12").innerHTML = arr[2];
+        document.getElementById("u13").innerHTML = arr[3];
+        document.getElementById("u14").innerHTML = arr[4];
+        document.getElementById("u15").innerHTML = arr[5];
+        document.getElementById("quan2").innerHTML = arr[6];
+        document.getElementById("u21").innerHTML = arr[7];
+        document.getElementById("u22").innerHTML = arr[8];
+        document.getElementById("u23").innerHTML = arr[9];
+        document.getElementById("u24").innerHTML = arr[10];
+        document.getElementById("u25").innerHTML = arr[11];
+        document.getElementById("point1").innerHTML = arr[12];
+        document.getElementById("point2").innerHTML = arr[13];
+
+    </script>
 
 
 
 </body>
+
 </html>

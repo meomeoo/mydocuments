@@ -13,9 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import app.WebsocketServer;
+import ch.qos.logback.core.joran.conditional.ElseAction;
+
 import com.google.gson.Gson;
-
-
 
 @Controller
 @RequestMapping("/game")
@@ -65,7 +65,7 @@ public class GameController {
         int viTriT1 = checkVitriTru1(indexReal, derection);
         int viTriT2 = checkVitriTru1(viTriT1, derection);
         if ((viTriT1 == 0 || viTriT1 == 6) && list.get(viTriT1) != 0) {
-           runAgain = false;
+            runAgain = false;
         } else {
             if ((viTriT1 == 1 || viTriT1 == 11 || viTriT1 == 7 || viTriT1 == 5) && (viTriT2 == 0 || viTriT2 == 6)
                     && list.get(viTriT1) == 0 && list.get(viTriT2) != 0 && Quan1 == true && Quan2 == true) {
@@ -123,8 +123,7 @@ public class GameController {
         return true;
     }
 
-    public void go( int index, String direction, int orderUser) throws InterruptedException {
-        String url = "http://localhost:8080/hello/render";
+    public void go(int index, String direction, int orderUser) throws InterruptedException {
         if (this.check == false) {
             this.khoiTao(new ArrayList<>());
             this.check = true;
@@ -212,8 +211,8 @@ public class GameController {
             this.khoiTao(new ArrayList<>());
             this.check = true;
         }
-        
-        return render(model);
+
+        return "ingame";
     }
 
     @RequestMapping(value = "/socket", method = RequestMethod.GET)
@@ -243,42 +242,66 @@ public class GameController {
                             DatagramPacket incoming = new DatagramPacket(BUFFER, BUFFER.length);
                             ss.receive(incoming); // Chờ nhận gói tin gởi đến
                             String message = new String(incoming.getData(), 0, incoming.getLength());
-
+                            String json;
                             char[] mes = message.toCharArray();
                             int[] d = new int[3];
                             int n = 0;
+                            System.out.println("Received from Bot:");
                             for (int i = 0; i < mes.length; i++) {
                                 if (mes[i] <= '9' && mes[i] >= '0') {
                                     d[n] = mes[i] - '0';
-                                    System.out.println("Received from Client d+1: " + d[n]);
+
+                                    System.out.print(d[n]+ ",");
                                     ++n;
                                     
                                 }
                             }
+                            System.out.println();
 
-                            if(d[1] == 0){
+
+                            if(d[1] == 0 && stop == false && d[1]<6 && d[1]>1){
                                 go(d[0], "left", d[2]);
                                 list.set(12,pointUser1);
                                 list.set(13,pointUser2);
-                                String json = new Gson().toJson(list );
+                                json = new Gson().toJson(list );
                                 WebsocketServer.send(json);
                             }
-                            else{
+                            else if(d[1] == 1 && stop == false ){
                                 go(d[0], "right", d[2]);
                                 list.set(12,pointUser1);
                                 list.set(13,pointUser2);
-                                String json = new Gson().toJson(list );
+                                json = new Gson().toJson(list );
                                 WebsocketServer.send(json);
                             }
+                            else if (stop == true){
+                                list.set(12,pointUser1);
+                                list.set(13,pointUser2);
+                                for(int i = 0; i<12;++i){
+                                    list.set(i, 0);
+                                }
+                                json = new Gson().toJson(list );
+
+                            }else{
+                                String not = "0";
+                                DatagramPacket outsending = new DatagramPacket(not.getBytes(), not.getBytes().length,
+                                    incoming.getAddress(), incoming.getPort());
+
+                               // send the new packet
+                                ss.send(outsending);
+
+                                System.out.println("Server says to Client: " + not);
+                                continue;
+                            }
+                            
                             
                             // scan new message to send
-                            DatagramPacket outsending = new DatagramPacket(message.getBytes(), message.getBytes().length,
+                            DatagramPacket outsending = new DatagramPacket(json.getBytes(), json.getBytes().length,
                                     incoming.getAddress(), incoming.getPort());
 
                             // send the new packet
                             ss.send(outsending);
 
-                            System.out.println("Server says to Client: " + message);
+                            System.out.println("Server says to Client: " + json);
 
                             // exit condition
                             if ((message).equals("bye")) {
@@ -301,28 +324,4 @@ public class GameController {
         ssend.join();
     }
 
-    
-
-    public String render(Model model) {
-        model.addAttribute("lists", list);
-        model.addAttribute("diem1", pointUser1);
-        model.addAttribute("diem2", pointUser2);
-        model.addAttribute("u11", list.get(1));
-        model.addAttribute("u12", list.get(2));
-        model.addAttribute("u13", list.get(3));
-        model.addAttribute("u14", list.get(4));
-        model.addAttribute("u15", list.get(5));
-        model.addAttribute("u21", list.get(7));
-        model.addAttribute("u22", list.get(8));
-        model.addAttribute("u23", list.get(9));
-        model.addAttribute("u24", list.get(10));
-        model.addAttribute("u25", list.get(11));
-        model.addAttribute("Q1", list.get(0));
-        model.addAttribute("Q2", list.get(6));
-        return "ingame";
-
-    }
-
 }
-
-   

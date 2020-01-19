@@ -119,7 +119,13 @@ public class PhongBan {
 
     public static void main(String[] args) {
         TruongPhong tp = new TruongPhong("khanh", 6, 7);
-        tp.inTTin();
+        NhanVien nv1 = new NhanVien("khanh1",1);
+        NhanVien nv2 = new NhanVien("khanh2",2);
+        PhongBan vanphong = new PhongBan("van phong");
+        vanphong.themNhanVien(nv1);
+        vanphong.themNhanVien(nv2);
+        vanphong.themNhanVien(tp);
+        vanphong.inTTin();
 
     }
 

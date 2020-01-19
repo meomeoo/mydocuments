@@ -1,0 +1,1 @@
+Khi có sẵn viên gachj để xây nhà, chọn cách học cách tạo ra viên gạch ( để có thể tạo ra viên gạch cho trường hợp đặc biệt)hay học cách lựa chọn các viên gạch(đặc điểm, tính chất, khi nào thì sử dụng tại sao sử dụng, tại sao nên sử dụng)

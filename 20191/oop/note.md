@@ -9,7 +9,7 @@
 
 ## 1/11/2019
 
-- Có 3 công cụ để xây dưngj project:
+- Có 3 công cụ để xây dựng project:
   - Ant 
   - Maven 
   - Gradle
