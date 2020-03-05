@@ -9,3 +9,7 @@ Muốn tạo list mới:
 
 ## ??? Câu hỏi 
 correlated ( độ tương đồng ??? trong xác xuất ) 
+
+## ??? Cẩu hỏi 14/2/2020 
+`Hàm matrix nhận đầu vào là một list (trong Python), list này thể hiện một vector cột. Nếu muốn biểu diễn một ma trận, đầu vào của matrix là một list của list, trong đó mỗi list bên trong thể hiện một vector cột của ma trận đó`
+Xem lại đầu vào list

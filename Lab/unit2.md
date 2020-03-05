@@ -5,6 +5,8 @@
 
 #### 14/12/2019
 - Hàm số có đạo hàm tại một điểm thì phải liên tục tại điểm đó
+- Hàm số khả vi ==> liên tục 
+- Hàm sô liên tục chưa chắc đã khả vi
 
 #### ?? Ma trận chuyển vị, ma trân đối, Trị riêng của ma trận 
 

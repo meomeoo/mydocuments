@@ -33,6 +33,7 @@ w = np.array([0. for x in range(7)]).reshape(-1,1)
 loop = 1000000
 cost = np.zeros((loop,1))
 learning_rate = 0.5
+print(x)
 for i in range(1,loop):
     r = np.dot(x,w) - y
     w[0] -= learning_rate*np.sum(r)/length

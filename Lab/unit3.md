@@ -20,7 +20,7 @@ Process:
 - Tâm lí khi cung cấp dữ liệu 
   * Xem xét về những khảo sát, đặt bản thân là nguwoif được khảo sát, đưa ra những câu hỏi một cách trung lập 
   * Đưa ra những câu hỏi đơn giản, đừng đưa ra những câu hỏi mà người trả lời không biết
-  * Tránh gây ảnh hưởng đến suy nghĩ của người tham gia khảo sát, giữ cho người được khảo sát "ngây thơ" nhất có thể để ta có thể thu thập một bộ dữ liệu khách quan.
+  * Tránh gây ảnh hưởng đến suy nghĩ của người tham gia khảo sát, giữ cho người được khảo sát "ngây thơ" nhất có thể để ta có thể thu thập một bộ dữ liệu khách quan. 
 
 ## 2.2
 Video1:  
@@ -29,7 +29,7 @@ Video1:
 
 ### 25/12/2019
 
-- Null Hypothesis: Nói rằng mọi phân tích, mối quan hệ, xu hướng, đo lươngf của bạn đều không có trong tập toàn thể, kết quả chỉ là một giá trị ngẫu nhiên  
+- Null Hypothesis: Nói rằng mọi phân tích, mối quan hệ, xu hướng, đo lường của bạn đều không có trong tập toàn thể, kết quả chỉ là một giá trị ngẫu nhiên  
 - Dùng p value để đánh giá Null H, nếu p < 0.05 thì ta loại bỏ được Null Hypothesis
 
 - Ta nói rằng Null Hypothesis có thể tạo ra kết kết quả đã đánh giá trong p time
