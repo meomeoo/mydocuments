@@ -2,7 +2,7 @@
 
 ## 5.1 Principles of Model Improvement 
 
-#### 5.1.1 Improving Models
+#### 5.1.1 Improving ModelsKhám phá
 
 - Một số cách để ta cải thiện mô hình của mình
  * Feature Selection
