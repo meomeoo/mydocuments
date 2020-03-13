@@ -5,9 +5,9 @@
  - Hiện tại em tập chung tìm hiểu vào hoạt động Labeling data
 
 - Kiến trục của hoạt động Labeling data gồm 3 gia đoạn. (Những việc label chỉ tập chung ở 2 giai đoạn đầu)
-  1. Writing labeling functions
-  2. Modeling Accuracies and Correlations
-  3. Training a discriminative model 
+ 1. Writing labeling functions
+ 2. Modeling Accuracies and Correlations
+ 3. Training a discriminative model 
 
 ### 1. __Writing labeling fuctions__:
  - Việc viết các LFs( Labeling fuctions) chính là việc ta encode các weak supervision sources: patterns, heuristics, external knowledge bases, crowdsourced labels, etc. , từ đó có sử dụng nhiều giả thiết để gán label cho mỗi điểm dữ liệu (mỗi điểm sẽ có thể có số nhãn bằng với số LF)
@@ -32,5 +32,4 @@
 - Trong phần snorkel em thấy có khá nhiều cái tutorial ví dụ như: Multi-Task Learning (MTL) Basics Tutorial, Snorkel can be used for Information Extraction,.. thì có những phần nào mà cần phải đọc vì nó liên quan đến cái bài toán của mình không ạ ??
 - Trong bài tóm tắt của em có phần nào cần đọc sâu hoặc hiểu sai a note giúp em được không ạ ?
 
-git submodule add  https://github.com/snorkel-team/snorkel-tutorials Lab/Advance/snorkel-tutorials
 
