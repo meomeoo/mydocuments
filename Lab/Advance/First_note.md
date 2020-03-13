@@ -52,5 +52,33 @@ Ví dụ:
 
 - __Text classification__: is the automated grouping of textual or partially textual entities. Document retrieval, categorization, routing, filtering, and clustering, as well as natural language processing tasks such as tagging, word sense disambiguation, *and some aspects of understanding can be formulated as text classification*.
 
-- __Active Learning__: The promise of AL is that by iteratively increasing the size of our carefully selected labeled data, it is possible to achieve similar (or greater [2]) performance to using a fully supervised data-set with a fraction of the cost or time that it takes to label all the data.
+- __Active Learning and Passive learning__
+  - __Active Learning__: 
+   * The promise of AL is that by iteratively increasing the size of our carefully selected labeled data, it is possible to achieve similar (or greater [2]) performance to using a fully supervised data-set with a fraction of the cost or time that it takes to label all the data., The main hypothesis in *active learning is that if a learning algorithm can choose the data it wants to learn from*, it can perform better than traditional methods with substantially less data for training. 
+  * In active learning terminology, we call this small labelled dataset the seed.
+  * Có thể nói không chỉ là thu thập dữ liệu mà ta có thể lựa chọn dữ liệu phù hợp một số tiêu chí để đưa vào huấn luyện.
+
+  - But what are these traditional methods exactly?
+  - __Passive Learning__: These are tasks which involve *gathering a large amount of data randomly sampled from the underlying distribution* and using this large dataset to train a model that can perform some sort of prediction, "where the learner receives no feedback from the instructor"
+
 [Reference](https://towardsdatascience.com/active-learning-tutorial-57c3398e34d)
+[Reference](https://en.wikipedia.org/wiki/Passive_learning)
+[Reference](https://www.datacamp.com/community/tutorials/active-learning)
+[Cần đọc về Uncertainty Sampling](http://burrsettles.com/pub/settles.activelearning.pdf)
+
+- __Statistical classification__: Là bài toán classification được giải quyết thông qua cách tiếp cận các phương pháp thống kê. Có 2 loại của phương pháp này
+  - __Discriminative model__:
+    * also referred to as conditional models, *are a class of models used in statistical classification*, especially in supervised machine learning. A discriminative classifier tries to model by just depending on the observed data while learning how to do the classification from the given statistics. (Là mô hình đưa ra output dạng xác suất)
+    * A discriminative model is a model of the conditional probability of the target Y, given an observation x, symbolically, {\displaystyle P(Y|X=x)}{\displaystyle P(Y|X=x)}; and Classifiers computed without using a probability model are also referred to loosely as "discriminative". 
+    * Mô hình được đưa về việc đánh giá xác suất có điều kiện của X thông qua công thức  BayEt   
+  - __Generative model__:
+    * Given an observable variable X and a target variable Y, a generative model is a statistical model of the joint probability distribution on X × Y, {\displaystyle P(X,Y)}{\displaystyle P(X,Y)}
+    * a generative model is a model of the conditional probability of the observable X, given a target y, symbolically, {\displaystyle P(X|Y=y)}{\displaystyle P(X|Y=y)}
+
+- __Empirical Risk Minimization(ERM)__: 
+ - Now how can we measure the effectiveness of this chosen function given that we don’t know what the actual distribution looks like? Bear in mind that all the potential functions can achieve the given goal. How do we find the function that’s the best representative of the true solution?
+ -True risk computes the average loss over all the possibilities. But the problem in the real world is that we don’t know what “all the possibilities” would look like. In mathematical terms, we say that we don’t know the true distribution over all the inputs and outputs. If we did, then we wouldn’t need machine learning in the first place.
+
+ - We assume that our samples come from this distribution and use our dataset as an approximation. If you compute the loss using the data points in our dataset, it’s called *empirical risk*. It’s “empirical” and not “true” because we are using a dataset that’s a subset of the whole population.
+
+ - When we build our learning model, we need to pick the function that minimizes the empirical risk i.e. the delta between the predicted output and the actual output for the data points in our dataset. This process of finding this function is called *empirical risk minimization*. Ideally, we would like to minimize the true risk. But we don’t have the information that allows us to achieve that, so our hope is that this empiricial risk will almost be the same as the true empirical risk. Hence by minimizing it, we aim to minimize the true risk.
