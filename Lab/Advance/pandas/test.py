@@ -1,0 +1,1 @@
+print('quản lý' in 'quản lý nhà hàng' )

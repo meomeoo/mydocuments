@@ -2,7 +2,7 @@
 
 ## 5.1 Principles of Model Improvement 
 
-#### 5.1.1 Improving ModelsKhám phá
+#### 5.1.1 Improving Models
 
 - Một số cách để ta cải thiện mô hình của mình
  * Feature Selection
@@ -60,8 +60,9 @@ Nhìn qua biểu đồ ta thấy Số lượng feature là 4,5,6 có thể đư�
 2. Regularization
 
 - Một số khái niệm cần biết:
- * __The variance__ : is how much the predictions for a given point vary between different realizations of the model.
- * __Bias__ : measures how far off in general these models' predictions are from the correct value.
+  * __Bias__ : measures how far off in general these models' predictions are from the correct value.
+  * __The variance__ : is how much the predictions for a given point vary between different realizations of the model.
+ 
  
 <img src = "https://i.imgur.com/XIhRFXs.png" />
 
@@ -113,7 +114,5 @@ Nhìn qua biểu đồ ta thấy Số lượng feature là 4,5,6 có thể đư�
    * Sau mỗi K lần train test với k-fold các giá trị model parameter sẽ được chia lấy giá trị trung bình
    * Vì kết quả của model parameter được lấy trung bình qua k lần vì vậy nếu k là số nhỏ sẽ gây ảnh hưởng đến giá trị cuối cùng, nhưng với bố dự liệu lớn và mô hình phức tạp cũng cần phải giới hạn về số k để đảm bảo thời gian train test hết k lần đảm bảo yêu cầu  về thời gian.
    * Vì vậy trong thực tế ta đôi khi phải đánh đổi độ chính xác của kết quả thông qua cross validation tùy vào điều kiện của tài nguyên. 
-
-
 
 - Ta sử dụng Nested Cross Validation để thực hiện model selection, với việc dùng outer loop để  evalutaion và inner loop(giống Cross validation) để  thưc hiện việc model selection   

@@ -1,4 +1,6 @@
-import numpy as np 
+thislist = ["apple", "banana", "cherry"]
 
-a = np.zeros((4,))
-print(a.shape)
+app = "apple"
+print(app in thislist)
+thislist.remove(app)
+print(thislist)
